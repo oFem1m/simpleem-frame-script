@@ -4,11 +4,16 @@ import number_of_frames as nof
 
 
 def screenshots(person_name, emotion):
+    # get full_name of file
     full_name = person_name + '.mp4'
+    # get path
     path = r'data\{0}\{1}'.format(emotion, full_name)
     cap = cv2.VideoCapture(path)
+    # we find such a frame rate to take about 50 screenshots
     freq = nof.number_of_frames(path) // 50
     currentframe = 0
+    
+    # create a new folder <emotion>_img where we will store the resulting screenshots
     emotion_img_dir = emotion + '_img'
     if not os.path.exists(r'data\{0}'.format(emotion_img_dir)):
         os.makedirs(r'data\{0}'.format(emotion_img_dir))
