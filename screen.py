@@ -11,6 +11,8 @@ def screenshots(person_name, emotion):
     cap = cv2.VideoCapture(path)
     # we find such a frame rate to take about 50 screenshots
     freq = nof.number_of_frames(path) // 50
+    if freq == 0:
+        freq += 1
     currentframe = 0
     
     # create a new folder <emotion>_img where we will store the resulting screenshots
